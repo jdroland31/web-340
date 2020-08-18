@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="A demonstration of EJS view creation">
+        <meta name="author" content="Jonathan Roland">
+        <title>Assignment 2.4</title>
+        <!-- Bootstrap CDN -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    </head>
+    <body>
+        <div role="main" class="container">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </nav>        
+            <br/><br/>       
+            <h2>EJS Views Example</h2>        
+            <div class="row">       
+                <div class="col-sm-12">
+                    <div class="alert alert-success" role="alert">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <strong>Author: </strong>
+                            </div>
+                            <div class="col-md-8">
+                                <span><%=firstName%> <%=lastName%></span>
+                                <br>
+                                <span><%=address%></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

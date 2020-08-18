@@ -1,0 +1,9 @@
+{
+    "name": "ejs-views",
+    "author": "Jonathan Roland",
+    "private": true,
+    "dependencies": {
+        "ejs": "^3.1.5",
+        "express": "^4.17.1"
+    }
+}
