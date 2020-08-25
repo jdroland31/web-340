@@ -1,3 +1,13 @@
+/*
+============================================
+; Title:  roland-assignment-3-2.js
+; Author: Jonathan Roland
+; Date:   23 August 2020
+; Modified By:
+; Description: A program demonstrating node logging with morgan
+;===========================================
+*/
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
