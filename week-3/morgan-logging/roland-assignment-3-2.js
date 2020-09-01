@@ -1,9 +1,9 @@
 /*
 ============================================
 ; Title:  roland-assignment-3-2.js
-; Author: Jonathan Roland
-; Date:   23 August 2020
-; Modified By:
+; Author: Prof. Krasso
+; Date:   24 August 2020
+; Modified By: Jonathan Roland
 ; Description: A program demonstrating node logging with morgan
 ;===========================================
 */
