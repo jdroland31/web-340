@@ -1,7 +1,9 @@
 <div role="main" class="container">
     <br/><br/>
     <h2>Names List</h2>
+    <!-- check names array to be greater than 0 -->
     <% if(names.length > 0){ %>
+    <!-- iterate the array and output the names -->
     <% for(var k = 0; k < names.length; k++) { %>
         <div class="alert alert-warning" role="alert"><strong><%= names[k] %></strong></div>
     <% } %>
