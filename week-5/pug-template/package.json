@@ -1,0 +1,10 @@
+{
+    "name": "if-else-render",
+    "author": "Professor Krasso",
+    "private": true,
+    "version": "0.0.1",
+    "dependencies": {
+        "express": "^4.17.1",
+        "pug": "^3.0.0"
+    }
+}
