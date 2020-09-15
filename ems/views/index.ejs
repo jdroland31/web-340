@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<%- include('header.ejs') %>
+<html>
+    <body class="bg-light">
+        <%- include('navbar.ejs') %>
+        <div class="container bg-info text-light">
+            <br>
+            <br>
+            <h3>Employee Records</h3>
+            <hr>
+            <p>Welcome to the Example Company's Employee Records page! We're still under construction but here's a sample:</p>
+            <br>
+            <table class="table table-bordered table-striped table-dark table-hover text-white">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Job Title</th>
+                        <th>Department</th>
+                    </tr>
+                </thead>
+                <tbody>      
+                    <% employees.forEach(function (emp) { %>
+                    <tr>
+                      <td><%= emp.firstName %></td>
+                      <td><%= emp.lastName %></td>
+                      <td><%= emp.job %></td>
+                      <td><%= emp.department %></td>
+                    </tr>
+                  </tbody>
+                  <% }) %>
+            </table>
+            <br>
+        </div>
+    </body>
+    <%- include('footer.ejs') %>
+    <%- include('scripts.ejs') %>
+</html>
