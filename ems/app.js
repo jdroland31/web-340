@@ -2,9 +2,19 @@
 var express = require("express");
 var http = require("http");
 var mongoose = require("mongoose");
-var path = require("path");
 var logger = require("morgan");
+var helmet = require("helmet");
+var path = require("path");
+
+// initialize express
+
 var app = express();
+
+// use statements
+
+app.use(logger("short"));
+
+app.use(helmet.xssFilter());
 
 var Employee = require("./models/employee");
 
@@ -71,6 +81,8 @@ app.get("/", function (request, response) {
         employees: employees
     });
 });
+
+
 
 //create server
 http.createServer(app).listen(8080, function() {
