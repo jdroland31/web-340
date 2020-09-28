@@ -69,7 +69,9 @@ db.once("open", function() {
 //add employee model
 var employee = new Employee({
     firstName: "Jim",
-    lastName: "Smith"
+    lastName: "Smith",
+    jobTitle: "Grounds Keeper",
+    department: "Maintenance"
 });
 
 //dependencies
@@ -112,13 +114,56 @@ app.get("/", function (request, response) {
     });
 });
 
+app.get('/new', function(req, res) {
+    res.render("new", {
+      title: 'EMS | New'
+    });
+});
+
+app.get("/list",function(request,response){
+ Employee.find({},function(error,employees){
+    if(error) throw error;
+    
+    response.render("list",{
+        title:"Employee List",
+        employees: employees
+    });
+ });
+});
+
 app.post("/process", function(request, response) {
 
-    console.log(request.body.txtName);
+    // console.log(request.body.txtName);
+    if (!request.body.firstName||!request.body.lastName||!request.body.jobTitle||!request.body.department) {
+        response.status(400).send("Entries must be filled out completely");
+        return;
+    }
+ 
+    // get the request's form data
 
+    var firstName = request.body.firstName;
+    var lastName = request.body.lastName;
+    var jobTitle = request.body.jobTitle;
+    var department = request.body.department;
+ 
+    console.log(firstName+', '+lastName+', '+jobTitle+', '+department);
+ 
+    // create a employee model
+    var employee = new Employee({
+        firstName: firstName,
+        lastName: lastName,
+        jobTitle: jobTitle,
+        department: department
+    });
+ 
+    // save
+    employee.save(function (error) {
+        if (error) throw error;
+        console.log(firstName+" "+lastName + " saved successfully!");
+    });
+ 
     response.redirect("/");
-
-});
+ });
 
 //create server
 http.createServer(app).listen(8080, function() {
