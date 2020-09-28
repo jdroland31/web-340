@@ -1,1 +1,18 @@
+<br /><br />
 
+<h2><%= message %></h2>
+<form method="post" action="/process">
+  <div class="form-group">
+    <label for="txtName">Name:</label>
+    <input type="text" class="form-control" id="txtName" name="txtName" />
+  </div>
+
+  <div class="form-group">
+    <!-- CSRF token -->
+    <input name="_csrf" value="<%= csrfToken %>" type="hidden" />
+
+    <button type="submit" class="btn btn-primary float-right">
+      Submit
+    </button>
+  </div>
+</form>

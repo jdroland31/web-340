@@ -5,6 +5,13 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var helmet = require("helmet");
 var path = require("path");
+var bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
+var csrf = require("csurf");
+
+// setup csrf protection
+
+var csrfProtection = csrf({cookie: true});
 
 // initialize express
 
@@ -15,6 +22,28 @@ var app = express();
 app.use(logger("short"));
 
 app.use(helmet.xssFilter());
+
+app.use(bodyParser.urlencoded({
+
+    extended: true
+
+}));
+
+app.use(cookieParser());
+
+app.use(csrfProtection);
+
+app.use(function(request, response, next) {
+
+    var token = request.csrfToken();
+
+    response.cookie('XSRF-TOKEN', token);
+
+    response.locals.csrfToken = token;
+
+    next();
+
+});
 
 var Employee = require("./models/employee");
 
@@ -78,11 +107,18 @@ app.get("/", function (request, response) {
     ];
     response.render("index", {
         title: "Home page",
-        employees: employees
+        employees: employees,
+        message: "New Employee:"
     });
 });
 
+app.post("/process", function(request, response) {
 
+    console.log(request.body.txtName);
+
+    response.redirect("/");
+
+});
 
 //create server
 http.createServer(app).listen(8080, function() {
