@@ -1,8 +1,0 @@
-{
-    "name": "EMS",
-    "description": "Employee Management System exercise for Bellevue University WEB 340",
-    "repository": "https://github.com/jdroland31/web-340/tree/master/ems",
-    "logo": "https://node-js-sample.herokuapp.com/node.png",
-    "keywords": ["node", "express", "bellevue"]
-  }
-  
