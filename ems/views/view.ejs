@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('header.ejs') %>
 
+  <body>
+    <%- include('navbar.ejs') %>
+
+    <div role="main" class="container" style="width: 50%;">
+      <br /><br />
+
+      <h2>Employee Details</h2>
+      <!-- <%= employee %> -->
+      <br />
+      <div>
+        <div class="form-group">
+          <label for="firstName">First Name:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstName"
+            readonly
+            value="<%= employee[0].firstName %>"
+            name="firstName"
+          />
+          <label for="lastName">Last Name:</label>
+          <input
+           type="text"
+           class="form-control"
+           id="lastName"
+           readonly
+           value="<%= employee[0].lastName %>"
+           name="lastName"
+          />
+          <label for="jobTitle">Job Title:</label>
+          <input
+           type="text"
+           class="form-control"
+           id="jobTitle"
+           readonly
+           value="<%= employee[0].jobTitle %>"
+           name="jobTitle"
+          />
+          <label for="department">Department:</label>
+          <input
+          type="text"
+          class="form-control"
+          id="department"
+          readonly
+          value="<%= employee[0].department %>"
+          name="department"
+          />
+        </div>
+      </div>
+
+      <br /><br />
+
+      <a href="/list">&larr; OK</a>
+    </div>
+    <%- include('footer.ejs') %>
+    <%- include('scripts') %>
+  </body>
+</html>

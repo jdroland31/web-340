@@ -68,9 +68,9 @@ db.once("open", function() {
 
 //add employee model
 var employee = new Employee({
-    firstName: "Jim",
+    firstName: "Bob",
     lastName: "Smith",
-    jobTitle: "Grounds Keeper",
+    jobTitle: "Groundskeeper",
     department: "Maintenance"
 });
 
@@ -81,36 +81,16 @@ app.use(logger("short"));
 
 //home route
 app.get("/", function (request, response) {
-    var employees = [
-        {
-            firstName: "Bob",
-            lastName: "Smith",
-            job: "Manager",
-            department: "Human Resources"
-        },
-        {
-            firstName: "Jill",
-            lastName: "Karns",
-            job: "C.T.O",
-            department: "Information Technology"
-        },
-        {
-            firstName: "Greg",
-            lastName: "Hunt",
-            job: "Secretary",
-            department: "Human Resources"
-        },
-        {
-            firstName: "Theresa",
-            lastName: "Bremmer",
-            job: "Sales Manager",
-            department: "Sales"
-        },
-    ];
-    response.render("index", {
-        title: "Home page",
-        employees: employees,
-        message: "New Employee:"
+    Employee.find({}, function (err, employees) {
+        if (err) {
+            console.log(err);
+            throw err;
+        } else {
+            response.render("index", {
+            title: "EMS | Home",
+            employees: employees,
+            });
+        }
     });
 });
 
@@ -120,17 +100,37 @@ app.get('/new', function(req, res) {
     });
 });
 
+//list route
 app.get("/list",function(request,response){
  Employee.find({},function(error,employees){
     if(error) throw error;
     
     response.render("list",{
-        title:"Employee List",
+        title:"EMS | Employee List",
         employees: employees
     });
  });
 });
 
+app.get("/view/:queryId", function (request, response) {
+
+    var queryId = request.params.queryName;
+    Employee.find({'id': queryId}, function(error, employees) {
+        if (error) throw error;
+        // console.log(employees);
+        if (employees.length > 0) {
+            response.render("view", {
+                title: "EMS | Individual Record",
+                employee: employees
+            });
+        }
+        else {
+            response.redirect("/list");
+        }
+    });
+});
+
+//process new employee entry
 app.post("/process", function(request, response) {
 
     // console.log(request.body.txtName);
